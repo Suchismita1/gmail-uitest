@@ -32,6 +32,7 @@ public class GmailSigninTest {
 	public void gmailloginshouldbesuccessful() throws Exception
 	{
 		// Goto Gmail item
+		//No need to configure system property
 		//System.setProperty("webdriver.chrome.drive", "C:\\Suchi_Work\\chromedriver_win32\\chromedriver.exe");
 		//ChromeDriverManager.getInstance().setup();
 		//WebDriver driver= new ChromeDriver();
