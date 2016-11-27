@@ -2,28 +2,28 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="32118" started-at="2016-11-26T13:28:54Z" finished-at="2016-11-26T13:29:26Z">
+  <suite name="Default suite" duration-ms="37159" started-at="2016-11-27T08:10:14Z" finished-at="2016-11-27T08:10:51Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="32118" started-at="2016-11-26T13:28:54Z" finished-at="2016-11-26T13:29:26Z">
-      <class name="com.suchi.gmail_uitest.GmailSigninTest">
-        <test-method status="PASS" signature="setupTest()[pri:0, instance:com.suchi.gmail_uitest.GmailSigninTest@5442a311]" name="setupTest" is-config="true" duration-ms="6333" started-at="2016-11-26T18:58:54Z" finished-at="2016-11-26T18:59:01Z">
+    <test name="Default test" duration-ms="37159" started-at="2016-11-27T08:10:14Z" finished-at="2016-11-27T08:10:51Z">
+      <class name="com.suchi.gmail_uitest.GmailSendRecieveMailTest">
+        <test-method status="PASS" signature="setupTest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@5442a311]" name="setupTest" is-config="true" duration-ms="4998" started-at="2016-11-27T13:40:14Z" finished-at="2016-11-27T13:40:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method status="PASS" signature="setupClass()[pri:0, instance:com.suchi.gmail_uitest.GmailSigninTest@5442a311]" name="setupClass" is-config="true" duration-ms="814" started-at="2016-11-26T18:59:01Z" finished-at="2016-11-26T18:59:01Z">
+        <test-method status="PASS" signature="setupClass()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@5442a311]" name="setupClass" is-config="true" duration-ms="1144" started-at="2016-11-27T13:40:19Z" finished-at="2016-11-27T13:40:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupClass -->
-        <test-method status="PASS" signature="gmailloginshouldbesuccessful()[pri:0, instance:com.suchi.gmail_uitest.GmailSigninTest@5442a311]" name="gmailloginshouldbesuccessful" duration-ms="22625" started-at="2016-11-26T18:59:01Z" finished-at="2016-11-26T18:59:24Z">
+        <test-method status="PASS" signature="gmailsendreceivetest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@5442a311]" name="gmailsendreceivetest" duration-ms="28647" started-at="2016-11-27T13:40:20Z" finished-at="2016-11-27T13:40:49Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- gmailloginshouldbesuccessful -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.suchi.gmail_uitest.GmailSigninTest@5442a311]" name="teardown" is-config="true" duration-ms="2318" started-at="2016-11-26T18:59:24Z" finished-at="2016-11-26T18:59:26Z">
+        </test-method> <!-- gmailsendreceivetest -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@5442a311]" name="teardown" is-config="true" duration-ms="2339" started-at="2016-11-27T13:40:49Z" finished-at="2016-11-27T13:40:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- com.suchi.gmail_uitest.GmailSigninTest -->
+      </class> <!-- com.suchi.gmail_uitest.GmailSendRecieveMailTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
