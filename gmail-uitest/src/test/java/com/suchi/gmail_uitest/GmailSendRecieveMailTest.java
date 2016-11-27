@@ -14,6 +14,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.appsence.pageobjects.EmailHomePage;
+import com.appsence.pageobjects.EmailViewPage;
+import com.appsence.pageobjects.SignInPage;
+import com.appsence.util.WebUtil;
+
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public class GmailSendRecieveMailTest {
@@ -32,89 +37,62 @@ public class GmailSendRecieveMailTest {
 	public void gmailsendreceivetest() throws Exception
 	{
 		// Goto Gmail item
-		driver.get("https://gmail.com");
+		SignInPage signInPage= WebUtil.gotoSignInPage(driver);
+				
 		// Find username textbox and enter detail
-		WebElement username=driver.findElement(By.id("Email"));
-		username.clear();
-		username.sendKeys("suchismita.ghadei@gmail.com");
+		signInPage.fillUsername(driver,"suchismita.ghadei@gmail.com");
+				
 		// Click on next button
-		WebElement nextbutton=driver.findElement(By.id("next"));
-		nextbutton.click();
+		signInPage.clickNext(driver);
+			
 		// entering password
-		Thread.sleep(1000);
-		WebElement password= driver.findElement(By.xpath("//*[@id='Passwd']"));
-		password.clear();
-		password.sendKeys("mastermind");
-		driver.findElement(By.id("PersistentCookie")).click();
+		signInPage.fillPassword(driver,"mastermind");
+				
 		//Clicking on signin button
-		WebElement signInbutton=driver.findElement(By.id("signIn"));
-		signInbutton.click();
+		EmailHomePage emailHomepage = signInPage.clickSignin(driver);
+				
 		//verifying successful login by finding inbox link
-		WebDriverWait wait=new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Inbox")));
-		Assert.assertTrue(driver.findElements(By.partialLinkText("Inbox")).size()> 0 , "Successfully logged in");
+		Assert.assertTrue(emailHomepage.isInboxExist(driver), "Successfully logged in");
 		
-		//Start Composing the mail & send
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(":j3")));
-		WebElement composebutton=driver.findElement(By.xpath("//*[@id=':j3']/div/div"));
-		composebutton.click();
+		//Start Composing the mail 
+		emailHomepage.clickComposeButton(driver);
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("textarea[aria-label='To']")));
-		WebElement toTextbar=driver.findElement(By.cssSelector("textarea[aria-label='To']"));
-		toTextbar.sendKeys("suchismita.ghadei@gmail.com");
+		//Fill the recipient 
+		emailHomepage.fillRecipient(driver,"suchismita.ghadei@gmail.com");
 		
-		WebElement Subjectbar=driver.findElement(By.cssSelector("input[placeholder='Subject']"));
-		String subject="Test Gmail by selenium";
-		Subjectbar.sendKeys(subject);
+		//Fill the Subject
+		final String subject="Test Gmail by selenium";
+		emailHomepage.fillSubject(driver,subject);
 		
-		WebElement Subjectbox=driver.findElement(By.cssSelector("div[aria-label='Message Body']"));
-		Subjectbox.sendKeys("Hello Testing");
+		//Fill the mailbody
+		emailHomepage.fillMailbody(driver,"Hello Testing");
 		
-		WebElement SendKey=driver.findElement(By.cssSelector("div[role='button'][aria-label='Send ‪(Ctrl-Enter)‬']"));
-		SendKey.click();
-		
+		//Click Send button
+		emailHomepage.clickSend(driver);
 		Thread.sleep(5000);
 		
 		//Verify the received email
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Inbox")));
-		driver.findElement(By.partialLinkText("Inbox")).click();
-		
+		//Click Inbox button
+		emailHomepage.clickInbox(driver);
 		//driver.findElement(By.cssSelector("div[aria-label='Refresh'][role='button']")).click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='y6'] span[id] b")));
-		WebElement newEmail=driver.findElement(By.cssSelector("div[class='y6'] span[id] b"));
-		newEmail.click();
-		Thread.sleep(1000);
-		/*WebElement backButton=driver.findElement(By.cssSelector("div[role-'button'][aria-label='Back to Inbox']"));
-		backButton.click();
-		System.out.println(driver.findElement(By.cssSelector("div[class='y6']span[id]")).getText());
-		*/
+		//Click the new mail
+		EmailViewPage emailViewPage = emailHomepage.clickMail(driver);
 		
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2[class='hp']")));
-		/*WebElement Subjecttext=driver.findElement(By.cssSelector("h2[class='hp']"));
-		String Actualsubject=Subjecttext.getText();
-		Assert.assertEquals(Actualsubject,subject);*/
+		//String actualsubject = emailViewPage.getEmailSubjectText(driver);
+		//Assert.assertEquals(subject, actualsubject);
+		//Signout operation
+		signInPage = emailHomepage.signout(driver);
+				
+		// Verify that signout is successful
+		Assert.assertTrue(signInPage.isHomePage(driver), "Successfully Logged out");
 		
-		//Goto to signout location
-				WebElement signoutimage=driver.findElement(By.xpath("//*[@id='gb']/div[1]/div[1]/div[2]/div[4]/div[1]/a/span"));
-				signoutimage.click();
-				//Clicking on signout button
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Sign out")));
-				WebElement signout=driver.findElement(By.linkText("Sign out"));
-				signout.click();
-				// Verify that signout is successful
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[1]/h2")));
-				String actual=driver.findElement(By.xpath("/html/body/div/div[2]/div[1]/h2")).getText();
-				String expected="Sign in to continue to Gmail";
-				Assert.assertEquals(actual , expected );
 		
 	}
 	@AfterTest
 	public void teardown()
 	{
-		//ChromeDriverManager.getInstance().setup();
 		driver.close();
 	}
 }
