@@ -8,44 +8,57 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.appsence.util.WebUtil;
+
 public class SignInPage {
  
 	public void fillUsername(WebDriver driver, String string) {
-		WebElement username=driver.findElement(By.id("Email"));
+		WebUtil.clearAndSendkey(driver, By.id("Email"), string);
+		/*WebElement username=driver.findElement(By.id("Email"));
 		username.clear();
-		username.sendKeys(string);
+		username.sendKeys(string);*/
 	}
 
 	public void clickNext(WebDriver driver) {
-		WebElement nextbutton=driver.findElement(By.id("next"));
-		nextbutton.click();
+		WebUtil.click(driver, By.id("next"));
+		/*WebElement nextbutton=driver.findElement(By.id("next"));
+		nextbutton.click();*/
 				
 	}
 
 	public void fillPassword(WebDriver driver, String string) throws Exception {
-		Thread.sleep(1000);
-		WebElement password= driver.findElement(By.xpath("//*[@id='Passwd']"));
+		WebUtil.waitForElementVisible(driver, By.xpath("//*[@id='Passwd']"));
+		WebUtil.clearAndSendkey(driver, By.xpath("//*[@id='Passwd']"), string);
+		
+		/*WebElement password= driver.findElement(By.xpath("//*[@id='Passwd']"));
 		password.clear();
-		password.sendKeys(string);
-		driver.findElement(By.id("PersistentCookie")).click();
+		password.sendKeys(string);*/
+		
+		WebUtil.click(driver, By.id("PersistentCookie"));
+		//driver.findElement(By.id("PersistentCookie")).click();
 		
 	}
 
 	public EmailHomePage clickSignin(WebDriver driver) {
-		WebElement signInbutton=driver.findElement(By.id("signIn"));
-		signInbutton.click();
+		WebUtil.click(driver, By.id("signIn"));
+		/*WebElement signInbutton=driver.findElement(By.id("signIn"));
+		signInbutton.click();*/
 		
-		WebDriverWait wait=new WebDriverWait(driver, 30);
+		WebUtil.waitForElementVisible(driver, By.partialLinkText("Inbox"));
+		/*WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Inbox")));
-		
+		*/
 		return PageFactory.initElements(driver, EmailHomePage.class);
 		
 	}
 
 	public boolean isHomePage(WebDriver driver) {
-		WebDriverWait wait=new WebDriverWait(driver, 30);
+		WebUtil.waitForElementVisible(driver, By.xpath("/html/body/div/div[2]/div[1]/h2"));
+		/*WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[2]/div[1]/h2")));
-		String actual=driver.findElement(By.xpath("/html/body/div/div[2]/div[1]/h2")).getText();
+		*/
+		String actual=WebUtil.getElementText(driver,By.xpath("/html/body/div/div[2]/div[1]/h2"));
+		//String actual=driver.findElement(By.xpath("/html/body/div/div[2]/div[1]/h2")).getText();
 		String expected="Sign in to continue to Gmail";
 		if(actual.equalsIgnoreCase(expected))
 			return true;

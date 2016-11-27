@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="33453" started-at="2016-11-27T11:15:20Z" finished-at="2016-11-27T11:15:53Z">
+  <suite name="Default suite" duration-ms="40456" started-at="2016-11-27T14:01:33Z" finished-at="2016-11-27T14:02:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="33453" started-at="2016-11-27T11:15:20Z" finished-at="2016-11-27T11:15:53Z">
+    <test name="Default test" duration-ms="40456" started-at="2016-11-27T14:01:33Z" finished-at="2016-11-27T14:02:14Z">
       <class name="com.suchi.gmail_uitest.GmailSendRecieveMailTest">
-        <test-method status="PASS" signature="setupTest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="setupTest" is-config="true" duration-ms="4813" started-at="2016-11-27T16:45:20Z" finished-at="2016-11-27T16:45:25Z">
+        <test-method status="PASS" signature="setupTest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="setupTest" is-config="true" duration-ms="4936" started-at="2016-11-27T19:31:33Z" finished-at="2016-11-27T19:31:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method status="PASS" signature="setupClass()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="setupClass" is-config="true" duration-ms="906" started-at="2016-11-27T16:45:25Z" finished-at="2016-11-27T16:45:26Z">
+        <test-method status="PASS" signature="setupClass()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="setupClass" is-config="true" duration-ms="842" started-at="2016-11-27T19:31:38Z" finished-at="2016-11-27T19:31:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupClass -->
-        <test-method status="PASS" signature="gmailsendreceivetest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="gmailsendreceivetest" duration-ms="25274" started-at="2016-11-27T16:45:26Z" finished-at="2016-11-27T16:45:51Z">
+        <test-method status="PASS" signature="gmailsendreceivetest()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="gmailsendreceivetest" duration-ms="32524" started-at="2016-11-27T19:31:39Z" finished-at="2016-11-27T19:32:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- gmailsendreceivetest -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="teardown" is-config="true" duration-ms="2421" started-at="2016-11-27T16:45:51Z" finished-at="2016-11-27T16:45:53Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.suchi.gmail_uitest.GmailSendRecieveMailTest@7d9d1a19]" name="teardown" is-config="true" duration-ms="2120" started-at="2016-11-27T19:32:12Z" finished-at="2016-11-27T19:32:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
